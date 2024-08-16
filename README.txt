@@ -1,0 +1,160 @@
+# FreshSales CRM CRUD Application
+
+This project is a CRUD (Create, Read, Update, Delete) application built with Node.js and Express.js. It integrates with the FreshSales CRM API to manage contacts.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Environment Variables](#environment-variables)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+This application provides RESTful endpoints to create, read, update, and delete contacts in FreshSales CRM. You can switch between using FreshSales CRM and a MySQL database by specifying the `data_store` parameter.
+
+## Features
+
+- Create new contacts in FreshSales CRM or MySQL database.
+- Retrieve contact details by `contact_id`.
+- Update contact information.
+- Delete contacts.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (v14 or higher)
+- NPM (v6 or higher)
+- MySQL (for optional database storage)
+- FreshSales CRM account (for API integration)
+
+## Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/freshsales-crud.git
+   cd freshsales-crud
+Install dependencies:
+
+bash
+Copy code
+npm install
+Set up environment variables:
+
+Create a .env file in the root directory with the following content:
+plaintext
+Copy code
+FRESHSALES_API_KEY=your_freshsales_api_key
+FRESHSALES_DOMAIN=your_freshsales_domain
+PORT=3000
+Replace your_freshsales_api_key and your_freshsales_domain with your actual FreshSales credentials.
+
+Run the application:
+
+bash
+Copy code
+node server.js
+Usage
+You can interact with the API using tools like Postman or cURL.
+
+Running Locally
+Start the server by running:
+
+bash
+Copy code
+node server.js
+Access the API at http://localhost:3000/api/.
+
+API Endpoints
+1. Create Contact
+Endpoint: POST /api/createContact
+
+Description: Creates a new contact in FreshSales CRM or MySQL database.
+
+Parameters:
+
+first_name: Contact's first name.
+last_name: Contact's last name.
+email: Contact's email.
+mobile_number: Contact's mobile number.
+data_store: Specify CRM to store in FreshSales or DATABASE to store in MySQL.
+Example Request Body:
+
+json
+Copy code
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "mobile_number": "1234567890",
+    "data_store": "CRM"
+}
+2. Get Contact
+Endpoint: POST /api/getContact
+
+Description: Retrieves contact details by contact_id.
+
+Parameters:
+
+contact_id: The ID of the contact.
+data_store: Specify CRM or DATABASE.
+Example Request Body:
+
+json
+Copy code
+{
+    "contact_id": "123456",
+    "data_store": "CRM"
+}
+3. Update Contact
+Endpoint: POST /api/updateContact
+
+Description: Updates the email and mobile number of a contact by contact_id.
+
+Parameters:
+
+contact_id: The ID of the contact.
+new_email: The new email for the contact.
+new_mobile_number: The new mobile number for the contact.
+data_store: Specify CRM or DATABASE.
+Example Request Body:
+
+json
+Copy code
+{
+    "contact_id": "123456",
+    "new_email": "john.new@example.com",
+    "new_mobile_number": "0987654321",
+    "data_store": "CRM"
+}
+4. Delete Contact
+Endpoint: POST /api/deleteContact
+
+Description: Deletes a contact by contact_id.
+
+Parameters:
+
+contact_id: The ID of the contact.
+data_store: Specify CRM or DATABASE.
+Example Request Body:
+
+json
+Copy code
+{
+    "contact_id": "123456",
+    "data_store": "CRM"
+}
+Environment Variables
+You will need to define the following environment variables in your .env file:
+
+FRESHSALES_API_KEY: Your FreshSales API key.
+FRESHSALES_DOMAIN: Your FreshSales domain (e.g., yourcompany.freshsales.io).
+PORT: The port number on which the server runs (default: 3000).
+Contributing
+Contributions are always welcome! Please follow the standard GitHub Flow and ensure to open an issue before submitting a pull request.
